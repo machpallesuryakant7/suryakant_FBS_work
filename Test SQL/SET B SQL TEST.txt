@@ -70,7 +70,7 @@ b) 15.68
 c) 15.7
 d) 16
 
-a)15.67
+a)15.68
 
 Q 15. Which SQL function is used to count the number of rows in a table?
 a) TOTAL()
@@ -107,4 +107,5 @@ with more than 50 sales.
 
 Ans: 
    SELECT P.product_id,P.product_name,count(s.sale_id) from Products as p join sales as s on p.product_id=s.product_id group by p.product_name Having count(s.sale_id)>50
+
 
