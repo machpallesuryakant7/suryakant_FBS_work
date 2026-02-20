@@ -1,0 +1,58 @@
+Q.1 Write an SQL query to retrieve all employees' names and salaries from a table named `Employees`, ordered by salary in descending order.
+Ans: SELECT name,salary FROM employees ORDER BY salary DESC. 
+
+Q.2. Retrieve the top 5 highest-paid employees from the `Employees` table.
+Ans: SELECT * FROM employees ORDER BY salary DESC LIMIT 5;
+
+Q. 3. Fetch employee records from the `Employees` table, skipping the first 3 records and showing the next 5 records.
+ANS: SELECT * FROM employees  LIMIT 5 OFFSET 3;
+
+Q.4.Write a query to count the number of employees in each department from the `Employees` table
+ANS: SELECT dept_id,Count(emp_id) from employees group by dept_id
+
+Q.5  Fetch the department-wise average salary from the `Employees` table, only for departments where the average salary is greater than 50,000.
+ANS: SELECT dept_id,avg(salary) from employees group by dept_id having avg(salary)>50000;
+
+Q.6 Retrieve a list of products from the `Products` table where the product name contains the word "Laptop" .
+ANS: SELECT * FROM products where product_name LIKE "%Laptop%"
+
+Q. 7. Extract the first three characters from the `student_name` column in the `Students` table.
+ANS: SELECT substring(STUDENT_NAME,1,3) from STUDENTS
+
+Q.8 Fetch only those students from the `Students` table whose names start with the letter "A".
+ANS: SELECT student_name FROM students WHERE student_name LIKE "A%";
+
+Q.9 Write an SQL query to find the total number of orders placed in each month, considering only those months where more than 100 orders were placed.
+ANS: SELECT month(date),count(order_ID) from orders group by month(date) having count(order_ID)>100;
+
+Q.10Get the total and average sales amount per category from the `Sales` table, considering only categories with total sales greater than 1,00,000.
+ANS: SELECT category,sum(amount) AS "TOTAL_AMOUNT",AVG(amount) AS "average_amount" from sales group by category having sum(amount)>100000;
+
+Q.11 a) The total number of employees
+
+Q.12  b) 8
+
+Q.13 c) HAVING
+
+Q.14 b) Returns all rows from the left table and matching rows from the right table
+
+Q.15 b) HELLO WORLD
+
+Q.16 You have two tables:
+• Orders with columns: order_id, customer_id, order_date, total_amount.
+• Customers with columns: customer_id, region.
+• O/P- region | total_orders
+Write an SQL query to find the total order amount (total_amount) for each region. Only include
+regions where the total order amount is greater than 10000
+
+ANS: SELECT C.region,sum(o.total_amount) as total_order FROM orders as o inner join customers as c on o.customer_id=c.customer_id group by order_id having sum(amount)>10000
+
+Q.17 You have two tables:
+• Books with columns: book_id, author_id, title, price.
+• Sales with columns: sale_id, book_id, sale_date, quantity.
+• O/P- author_id | total_books_sold
+Write an SQL query to find the total number of books sold by each author. Only include authors
+who have sold more than 100 books
+
+
+ANS: SELECT b.author_id,sum(s.quantity) as 'total_books_sold' FROM BOOKS as b inner join SALES as s on b.book_id=s.book_id group by b.author_id having sum(s.quantity)>100;
